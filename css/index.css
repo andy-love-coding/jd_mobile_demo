@@ -1,0 +1,294 @@
+body {
+  background: #f5f5f5;
+}
+
+/* 版心 */
+.jd_container {
+  /*
+   最大宽度 640px，参考iPhone 4/5 设备宽度 320px 的2倍图。设置最大宽度，是防止内容在更大的屏幕上放大变模糊
+   最大宽度 750px，参考iPone 6/7/8 设备宽度 375px 的2倍图
+   最小宽度 320px，最小设备的宽度就是 320px
+   宽度自适应
+  */
+  max-width: 640px;
+  /* max-width: 750px; */
+  min-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+  /* height: 500px; */
+  /* background: pink; */
+}
+
+
+/* 顶部搜索：这里用的流式布局(百分比布局)，当然也可以用 flex 弹性布局 */
+/* 此处 .jd_header 布局一般称为“双飞翼布局”或“圣杯布局” */
+.jd_header {
+  /* 
+    fixed 基于浏览器窗口大小，jd_container 版心管不住 fixed 容器 
+    解决办法是：在 fixed 容器中，再放一个版心 jd_header_box，这个版心(jd_header_box)与版心(jd_container)宽度重合
+  */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 999;
+  /* background: gray; */
+}
+.jd_header .jd_header_box {
+  max-width: 640px;
+  min-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+  height: 40px;
+  /* background: #d8505c; */
+  background: rgba(0,0,0,0);
+  position: relative;
+}
+.jd_header .jd_header_box a {
+  position: absolute;
+  top: 0;
+}
+.jd_header .jd_header_box .icon_logo {
+  left: 5px;
+  top: 6px;
+  width: 60px;
+  height: 34px;
+  /* background: url("../images/sprites.png") no-repeat 0 -106px/200px 200px; */
+  background-position: 0 -106px; /* 因为使用了精灵图公共样式，这里只需要背景图定位就行了 */
+  /* 背景图尺寸，2倍图是400*400，要缩小后再使用 */
+  /* background-size: 200px 200px;  */
+}
+.jd_header .jd_header_box .login {
+  right: 0;
+  width: 50px;
+  height: 40px; 
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  /* background: #999; */
+}
+.jd_header .jd_header_box form {
+  width: 100%;
+  padding-left: 65px;
+  padding-right: 50px;
+}
+.jd_header .jd_header_box form input {
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  border-radius: 15px;
+  padding-left: 30px;
+}
+.jd_header .jd_header_box form .icon_search {
+  position: absolute;
+  left: 70px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  /* background: url("../images/sprites.png") no-repeat -60px -109px/200px 200px; */
+  background-position: -60px -109px;
+}
+
+/* 轮播图 */
+.jd_banner {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.jd_banner ul:first-child {
+  /* ul容器要放 10 张轮播图，所以宽度是 10 张图的宽度之和，即 1000% */
+  width: 1000%;
+  transform: translateX(-10%);
+  -webkit-transform: translateX(-10%);
+}
+.jd_banner ul:first-child li {
+  /* li元素要显示一张图片，所以其宽度是 */
+  width: 10%;
+  float: left;
+}
+.jd_banner ul:first-child li a {
+  display: block;
+  width: 100%;
+}
+.jd_banner ul:first-child li a img {
+  width: 100%;
+  display: block; /* 去掉图片下间隙 */
+}
+.jd_banner ul:last-child {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 118px;
+  margin-left: -59px;
+}
+.jd_banner ul:last-child li {
+  width: 6px;
+  height: 6px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  float: left;
+  margin-right: 10px;
+}
+.jd_banner ul:last-child li:last-child {
+  margin-right: 0;
+}
+.jd_banner ul:last-child li.now {
+  background: #fff;
+}
+
+/* 导航栏 */
+.jd_nav {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+.jd_nav ul {
+  width: 100%;
+  padding: 10px 0;
+}
+.jd_nav ul li {
+  width: 25%;
+  float: left;
+}
+.jd_nav ul li a {
+  display: block;
+  width: 100%;
+}
+.jd_nav ul li a img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+}
+.jd_nav ul li a p {
+  font-size: 12px;
+  text-align: center;
+  color: #666;
+  padding: 5px 0;
+}
+
+/* 产品区: 公用样式 */
+.jd_product {
+  width: 100%;
+  padding: 0 5px;
+}
+.jd_product .pro_box {
+  width: 100%;
+  margin-top: 10px;
+  box-shadow: 0 0 1px #ccc;
+  background: #fff;
+  /* min-height: 200px; */
+}
+.jd_product .pro_box .tit.noborder {
+  border-bottom: none;
+}
+.jd_product .pro_box .tit {
+  height: 34px;
+  line-height: 34px;
+  border-bottom: 1px solid #ccc;
+}
+.jd_product .pro_box .tit h3 {
+  font-weight: normal; /* 正常不加粗 */
+  font-size: 16px;
+  padding-left: 23px;
+  position: relative;
+}
+.jd_product .pro_box .tit h3::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  width: 3px;
+  height: 12px;
+  background: #d8505c;
+}
+
+/* 产品区：秒杀头部 */
+.sk_icon {
+  width: 16px;
+  height: 20px;
+  float: left;
+  margin-left: 10px;
+  margin-top: 7px;
+  background: url("../images/seckill-icon.png") no-repeat 0 0/16px 20px;
+}
+.sk_text {
+  float: left;
+  margin-left: 10px;
+  color: #d8505c;
+}
+.sk_time {
+ float: left; 
+ margin-left: 10px;
+}
+.sk_time span {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  background: #333;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  margin-right: 3px;
+  float: left; /* 行内元素浮动后，变为行内块元素了，宽度就有效了 */
+  margin-top: 9px;
+}
+.sk_time span:nth-child(3n) {
+  background: #fff;
+  color: #333;
+  width: 3px;
+}
+
+/* 产品区：秒杀产品 */
+.sk_product {
+  width: 100%;
+  padding: 10px 0;
+}
+.sk_product li {
+  width: 33.33%;
+  float: left;
+}
+.sk_product li a {
+  display: block;
+  width: 100%;
+  border-right: 1px solid #ccc;
+}
+.sk_product li:last-child a {
+  border: none;
+}
+.sk_product li a img {
+  width: 64%;
+  display: block;
+  margin: 0 auto;
+}
+.sk_product li p {
+  font-size: 12px;
+  padding: 5px 0;
+  text-align: center;
+}
+.sk_product li p.nowPrice {
+  color: #d8505c;
+}
+.sk_product li p.oldPrice {
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* 产品区：组合样式 */
+.w50 {
+  width: 50%;
+}
+.w50 img {
+  display: block;
+  width: 100%;
+}
+.br {
+  border-right: 1px solid #ddd;
+}
+.bl {
+  border-left: 1px solid #ddd;
+}
+.bb {
+  border-bottom: 1px solid #ddd;
+}

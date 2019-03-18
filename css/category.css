@@ -1,0 +1,147 @@
+/* 全屏容器(不需要版心) */
+html, body {
+  height: 100%;
+}
+.jd_layout {
+  width: 100%;
+  height: 100%; /* 高度基于 body、html，所以要设置body和html的高度，这个容器的高度才会生效，实现区域滚动才有高度基础 */
+  /* background: red; */
+
+  /* 设置版心 */
+  /* max-width: 640px; */
+  /* min-width: 320px; */
+  /* margin: 0 auto; */
+}
+
+/* 顶部通栏 */
+.jd_topBar {
+  height: 45px;
+  width: 100%;
+  background: url("../images/header-bg.png") repeat-x 0 0/1px 45px;
+  border-bottom: 1px solid #ddd;
+  position: absolute; /* 让顶部通栏不占高度，方便 .jd_content 高度设为 100% */
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.jd_topBar a {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 44px;
+  /* background: pink; */
+  /* 之所以把 a 设置成比较大的区域（40*44），明显大于icon的面积（20*20），是因为大面积更方便点击 */
+  /* 保证内容区域 20*20，通过设置 padding 挤占内容区 */
+  padding: 12px 10px;
+  /* 让背景图从 内容区开始平铺，即设置平铺的原点 */
+  background-origin: content-box;
+  /* 裁剪内容以外的区域 */
+  background-clip: content-box; 
+}
+.jd_topBar .icon_back {
+  left: 0;
+  background-position: -20px 0;
+}
+.jd_topBar .icon_menu {
+  right: 0;
+  background-position: -60px 0; 
+}
+.jd_topBar form {
+  width: 100%;
+  padding: 0 40px;
+}
+.jd_topBar form input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  margin-top: 7px;
+  padding: 0 10px;
+}
+
+/* 内容容器 */
+.jd_content {
+  width: 100%;
+  height: 100%;
+  padding-top: 45px;
+  overflow: hidden;
+}
+/* 两栏自适应 */
+.jd_left {
+  width: 90px;
+  height: 100%;
+  float: left;
+  /* background: pink; */
+}
+.jd_left ul {
+  width: 100%;  
+}
+.jd_left ul li {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  background: #f3f4f5;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.jd_left ul li a {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+.jd_left ul li.now {
+  background: #fff;
+  border-right: none;  
+}
+.jd_left ul li.now a {
+  color: #d8505c
+}
+
+.jd_right {
+  overflow: hidden;
+  height: 100%;
+}
+.jd_right .jd_right_box  {
+  padding: 0 10px;
+}
+.jd_right .jd_right_box .banner {
+  display: block;
+  width: 100%;
+  padding-top: 10px;
+}
+.jd_right .jd_right_box .banner img {
+  display: block;
+  width: 100%;
+}
+.jd_right .jd_right_box .hot {
+  margin-top: 10px;
+}
+.jd_right .jd_right_box .hot h3 {
+  font-size: 12px;
+}
+.jd_right .jd_right_box .hot ul {
+  width: 100%;
+  margin-top: 10px;
+}
+.jd_right .jd_right_box .hot ul li {
+  width: 33.3333%;
+  float: left;
+}
+.jd_right .jd_right_box .hot ul li a {
+  display: block;
+  width: 100%;
+}
+.jd_right .jd_right_box .hot ul li a img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+.jd_right .jd_right_box .hot ul li p {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  padding: 5px 0;
+}

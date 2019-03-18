@@ -1,0 +1,62 @@
+/* reset css 重置样式 */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  /* 设置盒模型 让宽度从边框开始计算 为了防止内容溢出而出现横向滚动条 */
+  box-sizing: border-box;
+  /* 这是css3属性，移动端只用加 webkit 前缀即可，支持更多浏览器 */
+  -webkit-box-sizing: border-box;
+  /* 清除点击高亮效果 */
+  -webkit-tap-highlight-color: transparent;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+input {
+  border: none;
+  outline: none;
+  /* 在移动端只写上面两项(border/outline)，input样式去除不干净（立体样式的残留），还需加上下面的 */
+  -webkit-appearance: none;
+}
+
+/* common css 共用样式 */
+.ml10 {
+  margin-left: 10px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.f_left {
+  float: left;
+}
+.f_right {
+  float: right;
+}
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  clear: both;
+  /* 只有块级元素才管用 */
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
+/* 精灵兔的公共样式 */
+/* 只要元素的类以“icon_”开头，那么就会有精灵图背景了，此时只需背景定位，就可以显示想要的icon了，如：background-position: -60px -109px; */
+[class^="icon_"] {
+  background: url("../images/sprites.png") no-repeat 0 0/200px 200px;
+}
